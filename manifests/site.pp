@@ -15,8 +15,8 @@
 # == Define: releasestatus
 #
 define releasestatus::site(
-  $configfile = '',
-  $httproot = '',
+  $configfile = 'integrated.yaml',
+  $httproot = '/srv/static/release',
 ) {
 
   file { "/var/lib/releasestatus/${configfile}":
