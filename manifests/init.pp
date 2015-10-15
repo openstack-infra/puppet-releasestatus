@@ -15,9 +15,9 @@
 # Class: releasestatus
 #
 class releasestatus (
-  $releasestatus_prvkey_contents = '',
-  $releasestatus_pubkey_contents = '',
-  $releasestatus_gerrit_ssh_key = '',
+  $releasestatus_prvkey_contents = undef,
+  $releasestatus_pubkey_contents = undef,
+  $releasestatus_gerrit_ssh_key = undef,
 ) {
   if ! defined(Package['python-launchpadlib']) {
     package { 'python-launchpadlib':
@@ -66,7 +66,7 @@ class releasestatus (
     require => File['/var/lib/releasestatus'],
   }
 
-  if $releasestatus_prvkey_contents != '' {
+  if $releasestatus_prvkey_contents != undef {
     file { '/var/lib/releasestatus/.ssh/id_rsa':
       owner   => 'releasestatus',
       group   => 'releasestatus',
@@ -77,7 +77,7 @@ class releasestatus (
     }
   }
 
-  if $releasestatus_pubkey_contents != '' {
+  if $releasestatus_pubkey_contents != undef {
     file { '/var/lib/releasestatus/.ssh/id_rsa.pub':
       owner   => 'releasestatus',
       group   => 'releasestatus',
@@ -88,7 +88,7 @@ class releasestatus (
     }
   }
 
-  if $releasestatus_gerrit_ssh_key != '' {
+  if $releasestatus_gerrit_ssh_key != undef {
     file { '/var/lib/releasestatus/.ssh/known_hosts':
       owner   => 'releasestatus',
       group   => 'releasestatus',
