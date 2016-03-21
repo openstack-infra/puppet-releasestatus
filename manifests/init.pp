@@ -15,9 +15,9 @@
 # Class: releasestatus
 #
 class releasestatus (
+  $releasestatus_gerrit_ssh_key  = undef,
   $releasestatus_prvkey_contents = undef,
   $releasestatus_pubkey_contents = undef,
-  $releasestatus_gerrit_ssh_key = undef,
 ) {
   if ! defined(Package['python-launchpadlib']) {
     package { 'python-launchpadlib':
